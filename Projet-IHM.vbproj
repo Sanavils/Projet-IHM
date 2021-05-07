@@ -130,5 +130,14 @@
     </None>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ppnimp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\dos_de_carte.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\téléchargé.bmp" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

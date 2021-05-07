@@ -14,8 +14,8 @@ Public Class Form2
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-        Me.LabelTemps.Text = temps & " secondes"
         temps = temps - 1
+        Me.LabelTemps.Text = temps & " secondes"
         If temps < 10 Then
             LabelTemps.ForeColor = Color.Red
         End If
@@ -30,5 +30,19 @@ Public Class Form2
             Form1.Show()
         End If
 
+    End Sub
+
+    Private Sub Label3_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub ImageDosCarte_Click(sender As Object, e As EventArgs) Handles ImageDosCarte.Click
+        If ImageDosCarte.Visible = True Then
+            ImageDosCarte.Visible = False
+        End If
+    End Sub
+
+    Private Sub ImageDosCarte_BackgroundImageChanged(sender As Object, e As EventArgs) Handles ImageDosCarte.BackgroundImageChanged
+        ImageDosCarte.Image = Image.FromFile("ppnimp.png")
     End Sub
 End Class
