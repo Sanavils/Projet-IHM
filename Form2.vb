@@ -19,55 +19,65 @@ Public Class Form2
         Label2.Text = StringPassage
         Timer1.Interval = 1000
         Timer1.Start()
-        ' image(0) = My.Resources.Image_2
-        'image(1) = My.Resources.Image_3
-        'image(2) = My.Resources.Image_4
-        'image(3) = My.Resources.Image_0
-        'image(4) = My.Resources.Image_1
+        image(0) = My.Resources.Image_2
+        image(1) = My.Resources.Image_3
+        image(2) = My.Resources.Image_4
+        image(3) = My.Resources.Image_0
+        image(4) = My.Resources.Image_1
+        Randomize()
         For Each box As PictureBox In Panel1.Controls
             Dim aleatoire As Integer
-            aleatoire = ((4 * Rnd()) + 0)
-             Select Case aleatoire
-                Case 0
-                    If cpt0 < 3 Then
-                        aa.Image = image(aleatoire) 
-                        cpt0 += 1
-                    Else
-                            aleatoire = 1
-                    end If 
-
-                Case 1
-                    If cpt1 < 3 Then
-                        aa.Image = image(aleatoire)
-                        cpt1 += 1
-                    Else
-                            aleatoire = 2
-                    end If 
-                Case 2
-                    If cpt2 < 3 Then
-                        aa.Image = image(aleatoire)
-                        cpt2 += 1
-                    Else
-                            aleatoire = 3
-                    end If 
-                Case 3
-                    If cpt3 < 3 Then
-                        aa.Image = image(aleatoire)
-                        cpt3 += 1
-                    Else
-                            aleatoire = 4
-                    end If 
-                Case 4
-                    If cpt4 < 3 Then
-                        aa.Image = image(aleatoire)
-                        cpt4 += 1
-                    Else
-                            aleatoire = 0
-                    end If 
+            Dim bool As Boolean = False
+            While bool = False
 
 
-            End Select
-            
+                aleatoire = ((4 * Rnd()) + 0)
+                Select Case aleatoire
+                    Case 0
+                        If cpt0 < 4 Then
+                            box.Image = image(aleatoire)
+                            cpt0 += 1
+                            bool = True
+
+                        End If
+
+                    Case 1
+                        If cpt1 < 4 Then
+                            box.Image = image(aleatoire)
+                            cpt1 += 1
+                            bool = True
+
+                        End If
+                    Case 2
+                        If cpt2 < 4 Then
+                            box.Image = image(aleatoire)
+                            cpt2 += 1
+                            bool = True
+
+                        End If
+                    Case 3
+                        If cpt3 < 4 Then
+                            box.Image = image(aleatoire)
+                            cpt3 += 1
+                            bool = True
+
+                        End If
+                    Case 4
+                        If cpt4 < 4 Then
+                            box.Image = image(aleatoire)
+                            cpt4 += 1
+                            bool = True
+
+                        End If
+
+
+                End Select
+
+            End While
+            bool = True
+        Next
+
+
 
 
     End Sub
@@ -105,5 +115,10 @@ Public Class Form2
 
     End Sub
 
+    Private Sub Form2_BackgroundImageChanged(sender As Object, e As EventArgs) Handles Me.BackgroundImageChanged
+        For Each box As PictureBox In Panel1.Controls
+            box.Image = image("dos_de_carte.png")
+        Next
 
+    End Sub
 End Class
