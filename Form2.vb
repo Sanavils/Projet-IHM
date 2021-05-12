@@ -27,45 +27,47 @@ Public Class Form2
         For Each box As PictureBox In Panel1.Controls
             Dim aleatoire As Integer
             aleatoire = ((4 * Rnd()) + 0)
-            'box.Image = My.Resources.ResourceManager.GetObject("Image_" & aleatoire.ToString())
-
-            Select Case aleatoire
+             Select Case aleatoire
                 Case 0
-                    If cpt0 < 5 Then
-                        box.Image = My.Resources.ResourceManager.GetObject("Image_" & aleatoire.ToString())
+                    If cpt0 < 3 Then
+                        aa.Image = image(aleatoire) 
                         cpt0 += 1
-                    End If
+                    Else
+                            aleatoire = 1
+                    end If 
 
                 Case 1
-                    If cpt1 < 5 Then
-                        box.Image = My.Resources.ResourceManager.GetObject("Image_" & aleatoire.ToString())
+                    If cpt1 < 3 Then
+                        aa.Image = image(aleatoire)
                         cpt1 += 1
-                    End If
+                    Else
+                            aleatoire = 2
+                    end If 
                 Case 2
-                    If cpt2 < 5 Then
-                        box.Image = My.Resources.ResourceManager.GetObject("Image_" & aleatoire.ToString())
+                    If cpt2 < 3 Then
+                        aa.Image = image(aleatoire)
                         cpt2 += 1
-                    End If
+                    Else
+                            aleatoire = 3
+                    end If 
                 Case 3
-                    If cpt3 < 5 Then
-                        box.Image = My.Resources.ResourceManager.GetObject("Image_" & aleatoire.ToString())
+                    If cpt3 < 3 Then
+                        aa.Image = image(aleatoire)
                         cpt3 += 1
-                    End If
+                    Else
+                            aleatoire = 4
+                    end If 
                 Case 4
-                    If cpt4 < 5 Then
-                        box.Image = My.Resources.ResourceManager.GetObject("Image_" & aleatoire.ToString())
+                    If cpt4 < 3 Then
+                        aa.Image = image(aleatoire)
                         cpt4 += 1
-                    End If
+                    Else
+                            aleatoire = 0
+                    end If 
 
 
             End Select
-
-
-
-
-
-
-        Next
+            
 
 
     End Sub
