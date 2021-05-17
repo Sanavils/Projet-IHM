@@ -131,17 +131,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\ppnimp.png" />
+    <None Include="Resources\dos_de_carte.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Images\dos_de_carte.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Resources\ace.png" />
     <Content Include="Resources\8 de trefle.png" />
     <Content Include="Resources\Roi.png" />
     <Content Include="Resources\3 de coeur.png" />
     <Content Include="Resources\Dame.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
