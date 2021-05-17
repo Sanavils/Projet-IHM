@@ -29,6 +29,7 @@ Public Class Form2
         Randomize()
         For Each box As Label In Panel1.Controls
             box.Image = tabImage(5)
+            box.Image.Tag = 0
             Image_Random(box)
         Next
 
@@ -105,12 +106,10 @@ Public Class Form2
 
     End Sub
 
-    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
-
-    End Sub
 
     Private Sub Click_Label(sender As Object, e As EventArgs)
         sender.Image = tabImage(sender.Tag)
+        sender.Image.Tag = 1
     End Sub
 
     Private Sub Add_Event()
