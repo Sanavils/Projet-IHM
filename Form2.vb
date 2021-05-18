@@ -31,7 +31,6 @@ Public Class Form2
         Next
 
         Add_Event()
-        Verif_Carte()
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
@@ -104,22 +103,22 @@ Public Class Form2
     Private Sub Click_Label(sender As Object, e As EventArgs)
         sender.Image = stockImage(sender.Tag)
         sender.Image.Tag = 1
+        If sender.Image.Tag = 1 Then
+            tabImage(cptCarte) = sender.Tag
+            cptCarte += 1
+            If cptCarte >= 2 Or cptCarte <= 4 Then
+                If tabImage(0) = tabImage(1) Then
+                    MsgBox("Bien joué")
+                End If
+            ElseIf cptCarte > 2 Then
+                sender.Image = stockImage(5)
+            End If
+        End If
 
     End Sub
 
     Private Sub Verif_Carte()
         For Each Label As Label In Panel1.Controls
-            If Label.Image.Tag = 1 Then
-                tabImage(cptCarte) = Label.Tag
-                cptCarte += 1
-                If cptCarte >= 2 Or cptCarte <= 4 Then
-                    If tabImage(0) <> tabImage(1) Then
-                        MsgBox("Bien joué")
-                    End If
-                Else
-                    Label.Image = stockImage(5)
-                End If
-            End If
         Next
     End Sub
     Private Sub Add_Event()
