@@ -35,10 +35,6 @@ Public Class Form1
         Me.Hide()
     End Sub
 
-    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs)
-
-    End Sub
-
     Private Sub PseudoComboBox_TextChanged(sender As Object, e As EventArgs) Handles PseudoComboBox.TextChanged
         If Trim(PseudoComboBox.Text).Length > 2 Then
             JouerBtn.Enabled = True
@@ -51,5 +47,6 @@ Public Class Form1
         Me.Hide()
         Form3.Show()
     End Sub
+
 End Class
 

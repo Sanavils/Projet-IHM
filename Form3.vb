@@ -1,5 +1,5 @@
 ﻿Public Class Form3
-    Private Sub Pseudo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Pseudo.SelectedIndexChanged
+    Private Sub Pseudo_SelectedIndexChanged(sender As Object, e As EventArgs)
 
     End Sub
 
@@ -10,4 +10,6 @@
         Me.Hide()
         Form1.Show()
     End Sub
+
+
 End Class

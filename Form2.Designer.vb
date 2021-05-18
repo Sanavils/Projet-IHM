@@ -24,7 +24,7 @@ Partial Class Form2
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
+        Me.LabelPseudo = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.LabelTemps = New System.Windows.Forms.Label()
         Me.BtnAbandon = New System.Windows.Forms.Button()
@@ -61,14 +61,14 @@ Partial Class Form2
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Pseudo :"
         '
-        'Label2
+        'LabelPseudo
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(125, 21)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(39, 13)
-        Me.Label2.TabIndex = 2
-        Me.Label2.Text = "Label2"
+        Me.LabelPseudo.AutoSize = True
+        Me.LabelPseudo.Location = New System.Drawing.Point(125, 21)
+        Me.LabelPseudo.Name = "LabelPseudo"
+        Me.LabelPseudo.Size = New System.Drawing.Size(43, 13)
+        Me.LabelPseudo.TabIndex = 2
+        Me.LabelPseudo.Text = "Pseudo"
         '
         'Timer1
         '
@@ -120,140 +120,140 @@ Partial Class Form2
         '
         'Label17
         '
-        Me.Label17.Location = New System.Drawing.Point(318, 297)
+        Me.Label17.Location = New System.Drawing.Point(318, 315)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(67, 95)
         Me.Label17.TabIndex = 56
         '
         'Label19
         '
-        Me.Label19.Location = New System.Drawing.Point(245, 297)
+        Me.Label19.Location = New System.Drawing.Point(245, 315)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(67, 95)
         Me.Label19.TabIndex = 55
         '
         'Label20
         '
-        Me.Label20.Location = New System.Drawing.Point(172, 297)
+        Me.Label20.Location = New System.Drawing.Point(172, 315)
         Me.Label20.Name = "Label20"
         Me.Label20.Size = New System.Drawing.Size(67, 95)
         Me.Label20.TabIndex = 54
         '
         'Label21
         '
-        Me.Label21.Location = New System.Drawing.Point(99, 297)
+        Me.Label21.Location = New System.Drawing.Point(99, 315)
         Me.Label21.Name = "Label21"
         Me.Label21.Size = New System.Drawing.Size(67, 95)
         Me.Label21.TabIndex = 53
         '
         'Label22
         '
-        Me.Label22.Location = New System.Drawing.Point(26, 297)
+        Me.Label22.Location = New System.Drawing.Point(26, 315)
         Me.Label22.Name = "Label22"
         Me.Label22.Size = New System.Drawing.Size(67, 95)
         Me.Label22.TabIndex = 52
         '
         'Label12
         '
-        Me.Label12.Location = New System.Drawing.Point(318, 202)
+        Me.Label12.Location = New System.Drawing.Point(318, 213)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(67, 95)
         Me.Label12.TabIndex = 51
         '
         'Label13
         '
-        Me.Label13.Location = New System.Drawing.Point(245, 202)
+        Me.Label13.Location = New System.Drawing.Point(245, 213)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(67, 95)
         Me.Label13.TabIndex = 50
         '
         'Label14
         '
-        Me.Label14.Location = New System.Drawing.Point(172, 202)
+        Me.Label14.Location = New System.Drawing.Point(172, 213)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(67, 95)
         Me.Label14.TabIndex = 49
         '
         'Label15
         '
-        Me.Label15.Location = New System.Drawing.Point(99, 202)
+        Me.Label15.Location = New System.Drawing.Point(99, 213)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(67, 95)
         Me.Label15.TabIndex = 48
         '
         'Label16
         '
-        Me.Label16.Location = New System.Drawing.Point(26, 202)
+        Me.Label16.Location = New System.Drawing.Point(26, 213)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(67, 95)
         Me.Label16.TabIndex = 47
         '
         'Label6
         '
-        Me.Label6.Location = New System.Drawing.Point(318, 107)
+        Me.Label6.Location = New System.Drawing.Point(318, 119)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(67, 95)
         Me.Label6.TabIndex = 46
         '
         'Label7
         '
-        Me.Label7.Location = New System.Drawing.Point(245, 107)
+        Me.Label7.Location = New System.Drawing.Point(245, 119)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(67, 95)
         Me.Label7.TabIndex = 45
         '
         'Label8
         '
-        Me.Label8.Location = New System.Drawing.Point(172, 107)
+        Me.Label8.Location = New System.Drawing.Point(172, 119)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(67, 95)
         Me.Label8.TabIndex = 44
         '
         'Label9
         '
-        Me.Label9.Location = New System.Drawing.Point(99, 107)
+        Me.Label9.Location = New System.Drawing.Point(99, 119)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(67, 95)
         Me.Label9.TabIndex = 43
         '
         'Label11
         '
-        Me.Label11.Location = New System.Drawing.Point(26, 107)
+        Me.Label11.Location = New System.Drawing.Point(26, 119)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(67, 95)
         Me.Label11.TabIndex = 42
         '
         'Label10
         '
-        Me.Label10.Location = New System.Drawing.Point(318, 12)
+        Me.Label10.Location = New System.Drawing.Point(318, 18)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(67, 95)
         Me.Label10.TabIndex = 41
         '
         'Label5
         '
-        Me.Label5.Location = New System.Drawing.Point(245, 12)
+        Me.Label5.Location = New System.Drawing.Point(245, 18)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(67, 95)
         Me.Label5.TabIndex = 40
         '
         'Label4
         '
-        Me.Label4.Location = New System.Drawing.Point(172, 12)
+        Me.Label4.Location = New System.Drawing.Point(172, 18)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(67, 95)
         Me.Label4.TabIndex = 39
         '
         'Label18
         '
-        Me.Label18.Location = New System.Drawing.Point(99, 12)
+        Me.Label18.Location = New System.Drawing.Point(99, 18)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(67, 95)
         Me.Label18.TabIndex = 38
         '
         'Label3
         '
-        Me.Label3.Location = New System.Drawing.Point(26, 12)
+        Me.Label3.Location = New System.Drawing.Point(26, 18)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(67, 95)
         Me.Label3.TabIndex = 0
@@ -266,7 +266,7 @@ Partial Class Form2
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.BtnAbandon)
         Me.Controls.Add(Me.LabelTemps)
-        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.LabelPseudo)
         Me.Controls.Add(Me.Label1)
         Me.Name = "Form2"
         Me.Text = "Form2"
@@ -276,7 +276,7 @@ Partial Class Form2
 
     End Sub
     Friend WithEvents Label1 As Label
-    Friend WithEvents Label2 As Label
+    Friend WithEvents LabelPseudo As Label
     Friend WithEvents Timer1 As Timer
     Friend WithEvents LabelTemps As Label
     Friend WithEvents BtnAbandon As Button

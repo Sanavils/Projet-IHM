@@ -2,33 +2,30 @@
 
 Public Class Form2
     Dim temps As Integer = 60
-    Dim tabImage(5) As Image
+    Dim stockImage(5) As Image
     Dim cpt0 As Integer
     Dim cpt1 As Integer
     Dim cpt2 As Integer
     Dim cpt3 As Integer
     Dim cpt4 As Integer
-
-
+    Dim cptCarte As Integer
+    Dim tabImage(3) As Integer
     Public Property StringPassage As String
-    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs)
-
-    End Sub
 
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Label2.Text = StringPassage
+        LabelPseudo.Text = StringPassage
         Timer1.Interval = 1000
         Timer1.Start()
-        tabImage(0) = My.Resources.Image_2
-        tabImage(1) = My.Resources.Image_3
-        tabImage(2) = My.Resources.Image_4
-        tabImage(3) = My.Resources.Image_0
-        tabImage(4) = My.Resources.Image_1
-        tabImage(5) = My.Resources.Image_5
+        stockImage(0) = My.Resources.Image_2
+        stockImage(1) = My.Resources.Image_3
+        stockImage(2) = My.Resources.Image_4
+        stockImage(3) = My.Resources.Image_0
+        stockImage(4) = My.Resources.Image_1
+        stockImage(5) = My.Resources.Image_5
 
         Randomize()
         For Each box As Label In Panel1.Controls
-            box.Image = tabImage(5)
+            box.Image = stockImage(5)
             box.Image.Tag = 0
             Image_Random(box)
         Next
@@ -108,8 +105,19 @@ Public Class Form2
 
 
     Private Sub Click_Label(sender As Object, e As EventArgs)
-        sender.Image = tabImage(sender.Tag)
+        sender.Image = stockImage(sender.Tag)
         sender.Image.Tag = 1
+        For Each Label As Label In Panel1.Controls
+            If sender.Image.Tag = 1 Then
+                tabImage(cptCarte) = sender.Tag
+                cptCarte += 1
+                If cptCarte = 2 Then
+                    If tabImage(0) = tabImage(1) Then
+                        sender.Image.Enable = False
+                    End If
+                End If
+            End If
+        Next
     End Sub
 
     Private Sub Add_Event()
