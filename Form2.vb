@@ -31,6 +31,7 @@ Public Class Form2
         Next
 
         Add_Event()
+        Verif_Carte()
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
@@ -87,10 +88,7 @@ Public Class Form2
                         bool = True
 
                     End If
-
-
             End Select
-
         End While
         bool = True
     End Function
@@ -103,23 +101,27 @@ Public Class Form2
 
     End Sub
 
-
     Private Sub Click_Label(sender As Object, e As EventArgs)
         sender.Image = stockImage(sender.Tag)
         sender.Image.Tag = 1
+
+    End Sub
+
+    Private Sub Verif_Carte()
         For Each Label As Label In Panel1.Controls
-            If sender.Image.Tag = 1 Then
-                tabImage(cptCarte) = sender.Tag
+            If Label.Image.Tag = 1 Then
+                tabImage(cptCarte) = Label.Tag
                 cptCarte += 1
-                If cptCarte = 2 Then
-                    If tabImage(0) = tabImage(1) Then
-                        sender.Image.Enable = False
+                If cptCarte >= 2 Or cptCarte <= 4 Then
+                    If tabImage(0) <> tabImage(1) Then
+                        MsgBox("Bien joué")
                     End If
+                Else
+                    Label.Image = stockImage(5)
                 End If
             End If
         Next
     End Sub
-
     Private Sub Add_Event()
         For Each label As Label In Panel1.Controls
             AddHandler label.Click, AddressOf Click_Label
