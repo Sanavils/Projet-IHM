@@ -3,19 +3,17 @@
 Public Class Form2
     Dim temps As Integer = 60
     Dim stockImage(5) As Image
-    Dim cpt0 As Integer
-    Dim cpt1 As Integer
-    Dim cpt2 As Integer
-    Dim cpt3 As Integer
-    Dim cpt4 As Integer
+    Dim cpt0 As Integer, cpt1 As Integer, cpt2 As Integer, cpt3 As Integer, cpt4 As Integer
     Dim cptCarte As Integer
     Dim tabImage(3) As Integer
+    Dim Start As Boolean = False
+    Dim carteClicked As Integer = 0
+    Dim seconde As Integer = 1000
     Public Property StringPassage As String
 
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LabelPseudo.Text = StringPassage
-        Timer1.Interval = 1000
-        Timer1.Start()
+        Timer1.Interval = seconde
         stockImage(0) = My.Resources.Image_2
         stockImage(1) = My.Resources.Image_3
         stockImage(2) = My.Resources.Image_4
@@ -23,13 +21,12 @@ Public Class Form2
         stockImage(4) = My.Resources.Image_1
         stockImage(5) = My.Resources.Image_5
 
-        Randomize()
+        'Randomize()
         For Each box As Label In Panel1.Controls
             box.Image = stockImage(5)
             box.Image.Tag = 0
             Image_Random(box)
         Next
-
         Add_Event()
     End Sub
 
@@ -101,25 +98,39 @@ Public Class Form2
     End Sub
 
     Private Sub Click_Label(sender As Object, e As EventArgs)
-        sender.Image = stockImage(sender.Tag)
-        sender.Image.Tag = 1
-        If sender.Image.Tag = 1 Then
-            tabImage(cptCarte) = sender.Tag
-            cptCarte += 1
-            If cptCarte >= 2 Or cptCarte <= 4 Then
-                If tabImage(0) = tabImage(1) Then
-                    MsgBox("Bien joué")
-                End If
-            ElseIf cptCarte > 2 Then
-                sender.Image = stockImage(5)
-            End If
+        If Start = False Then
+            Timer1.Start()
+            Start = True
         End If
 
+        sender.Image = stockImage(sender.Tag)
+        sender.Image.Tag = 1
+        If sender.Image.Tag = 1 And carteClicked >= 1 Then
+            Threading.Thread.Sleep(seconde)
+            tabImage(carteClicked) = sender.Tag
+        End If
+        carteClicked += 1
+        Verif_Tableau()
     End Sub
 
-    Private Sub Verif_Carte()
-        For Each Label As Label In Panel1.Controls
+    Private Sub Verif_Tableau()
+        For j = 0 To tabImage.Length - 1
+            For k = j + 1 To tabImage.Length - 1
+                If tabImage(j) <> tabImage(k) Then
+                    Retourner_Carte()
+                    Exit Sub
+                End If
+            Next
         Next
+    End Sub
+    Private Sub Retourner_Carte()
+        For Each Label As Label In Panel1.Controls
+            If Label.Image.Tag = 1 And Label.Enabled <> False Then
+                Label.Image = stockImage(5)
+                Label.Image.Tag = 0
+            End If
+        Next
+        carteClicked = 0
     End Sub
     Private Sub Add_Event()
         For Each label As Label In Panel1.Controls
