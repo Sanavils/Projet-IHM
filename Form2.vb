@@ -48,12 +48,12 @@ Public Class Form2
 
             aleatoire = ((4 * Rnd()) + 0)
             Select Case aleatoire
+
                 Case 0
                     If cpt0 < 4 Then
                         box.Tag = aleatoire
                         cpt0 += 1
                         bool = True
-
                     End If
 
                 Case 1
@@ -68,7 +68,6 @@ Public Class Form2
                         box.Tag = aleatoire
                         cpt2 += 1
                         bool = True
-
                     End If
                 Case 3
                     If cpt3 < 4 Then
@@ -103,19 +102,27 @@ Public Class Form2
 
         sender.Image = stockImage(sender.Tag)
         sender.Image.Tag = 1
-        If sender.Image.Tag = 1 And carteClicked >= 0 And carteClicked <= 4 Then
+        If sender.Image.Tag = 1 And carteClicked <= 4 Then
+            carteClicked += 1
             tabImage.Add(sender.Tag)
-            If carteClicked >= 1 And carteClicked <= 4 Then
+            If carteClicked > 1 And carteClicked <= 4 Then
                 Verif_Tableau()
             End If
         End If
-        carteClicked += 1
+
 
     End Sub
     Private Sub Verif_Tableau()
         Dim size As Integer = tabImage.Count - 2
         For j = 0 To size
             If tabImage(j) <> tabImage(j + 1) Then
+                If tabImage.Count = 4 Then
+                    For Each Carte As Label In Panel1.Controls
+                        If Carte.Tag = 1 And Carte.Enabled = True Then
+                            Carte.Enabled = False
+                        End If
+                    Next
+                End If
                 Retourner_Carte()
                 Exit Sub
             End If
@@ -125,7 +132,7 @@ Public Class Form2
         Refresh()
         Threading.Thread.Sleep(seconde)
         For Each Label As Label In Panel1.Controls
-            If Label.Image.Tag = 1 Then
+            If Label.Image.Tag = 1 And Label.Enabled = True Then
                 Label.Image = stockImage(5)
                 Label.Image.Tag = 0
             End If
