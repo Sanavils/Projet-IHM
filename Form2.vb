@@ -116,17 +116,19 @@ Public Class Form2
         Dim size As Integer = tabImage.Count - 2
         For j = 0 To size
             If tabImage(j) <> tabImage(j + 1) Then
-                If tabImage.Count = 4 Then
-                    For Each Carte As Label In Panel1.Controls
-                        If Carte.Tag = 1 And Carte.Enabled = True Then
-                            Carte.Enabled = False
-                        End If
-                    Next
-                End If
                 Retourner_Carte()
                 Exit Sub
             End If
         Next
+        If tabImage.Count = 4 Then
+            For Each Carte As Label In Panel1.Controls
+                If Carte.Tag = 1 And Carte.Enabled = True Then
+                    Carte.Enabled = False
+                End If
+            Next
+            carteClicked = 0
+            tabImage.Clear()
+        End If
     End Sub
     Private Sub Retourner_Carte()
         Refresh()
