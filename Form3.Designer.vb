@@ -23,10 +23,12 @@ Partial Class Form3
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.PseudoBox = New System.Windows.Forms.ComboBox()
-        Me.ListBox1 = New System.Windows.Forms.ListBox()
-        Me.ListBox2 = New System.Windows.Forms.ListBox()
-        Me.ListBox3 = New System.Windows.Forms.ListBox()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.ListView1 = New System.Windows.Forms.ListView()
+        Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Button1
@@ -38,57 +40,59 @@ Partial Class Form3
         Me.Button1.Text = "Fermer"
         Me.Button1.UseVisualStyleBackColor = True
         '
-        'PseudoBox
+        'GroupBox1
         '
-        Me.PseudoBox.FormattingEnabled = True
-        Me.PseudoBox.Location = New System.Drawing.Point(49, 59)
-        Me.PseudoBox.Name = "PseudoBox"
-        Me.PseudoBox.Size = New System.Drawing.Size(101, 21)
-        Me.PseudoBox.TabIndex = 2
+        Me.GroupBox1.Controls.Add(Me.ListView1)
+        Me.GroupBox1.Location = New System.Drawing.Point(33, 37)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(641, 351)
+        Me.GroupBox1.TabIndex = 4
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "Liste :"
         '
-        'ListBox1
+        'ListView1
         '
-        Me.ListBox1.FormattingEnabled = True
-        Me.ListBox1.Location = New System.Drawing.Point(232, 72)
-        Me.ListBox1.Name = "ListBox1"
-        Me.ListBox1.Size = New System.Drawing.Size(163, 290)
-        Me.ListBox1.TabIndex = 3
+        Me.ListView1.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3})
+        Me.ListView1.HideSelection = False
+        Me.ListView1.Location = New System.Drawing.Point(13, 20)
+        Me.ListView1.Name = "ListView1"
+        Me.ListView1.Size = New System.Drawing.Size(622, 325)
+        Me.ListView1.TabIndex = 0
+        Me.ListView1.UseCompatibleStateImageBehavior = False
+        Me.ListView1.View = System.Windows.Forms.View.Details
         '
-        'ListBox2
+        'ColumnHeader1
         '
-        Me.ListBox2.BackColor = System.Drawing.SystemColors.ActiveBorder
-        Me.ListBox2.FormattingEnabled = True
-        Me.ListBox2.Location = New System.Drawing.Point(392, 72)
-        Me.ListBox2.Name = "ListBox2"
-        Me.ListBox2.Size = New System.Drawing.Size(163, 290)
-        Me.ListBox2.TabIndex = 4
+        Me.ColumnHeader1.Text = "Pseudo"
+        Me.ColumnHeader1.Width = 205
         '
-        'ListBox3
+        'ColumnHeader2
         '
-        Me.ListBox3.FormattingEnabled = True
-        Me.ListBox3.Location = New System.Drawing.Point(552, 72)
-        Me.ListBox3.Name = "ListBox3"
-        Me.ListBox3.Size = New System.Drawing.Size(163, 290)
-        Me.ListBox3.TabIndex = 5
+        Me.ColumnHeader2.Text = "Timer"
+        Me.ColumnHeader2.Width = 204
+        '
+        'ColumnHeader3
+        '
+        Me.ColumnHeader3.Text = "Carre"
+        Me.ColumnHeader3.Width = 208
         '
         'Form3
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
-        Me.Controls.Add(Me.ListBox3)
-        Me.Controls.Add(Me.ListBox2)
-        Me.Controls.Add(Me.ListBox1)
-        Me.Controls.Add(Me.PseudoBox)
         Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.GroupBox1)
         Me.Name = "Form3"
         Me.Text = "Form3"
+        Me.GroupBox1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
     Friend WithEvents Button1 As Button
-    Friend WithEvents PseudoBox As ComboBox
-    Friend WithEvents ListBox1 As ListBox
-    Friend WithEvents ListBox2 As ListBox
-    Friend WithEvents ListBox3 As ListBox
+    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents ListView1 As ListView
+    Friend WithEvents ColumnHeader1 As ColumnHeader
+    Friend WithEvents ColumnHeader2 As ColumnHeader
+    Friend WithEvents ColumnHeader3 As ColumnHeader
 End Class

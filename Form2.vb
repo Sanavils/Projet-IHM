@@ -1,18 +1,20 @@
 ﻿Imports System.IO
 
 Public Class Form2
-    Dim temps As Integer = 60
+    Dim temps As Integer = 10
+    Dim tempsPartie As Integer = temps
     Dim stockImage(5) As Image
     Dim cpt0 As Integer, cpt1 As Integer, cpt2 As Integer, cpt3 As Integer, cpt4 As Integer
-    Dim cptCarte As Integer
+    Dim cptCarre As Integer
     Dim tabImage As ArrayList = New ArrayList()
-    Dim Start As Boolean = False
+    Dim start As Boolean = False
     Dim carteClicked As Integer = 0
     Dim seconde As Integer = 1000
-    Public Property StringPassage As String
-
+    Dim pseudoJoueur As String
+    Dim tempsCarre As Integer = 0
+    Dim partieGagne As Boolean = False
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        LabelPseudo.Text = StringPassage
+        LabelPseudo.Text = pseudoJoueur
         Timer1.Interval = seconde
         stockImage(0) = My.Resources.Image_0
         stockImage(1) = My.Resources.Image_1
@@ -31,13 +33,18 @@ Public Class Form2
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-        temps = temps - 1
-        Me.LabelTemps.Text = temps & " secondes"
-        If temps < 10 Then
+        tempsPartie = tempsPartie - 1
+        Me.LabelTemps.Text = tempsPartie & " secondes"
+        If tempsPartie < 10 Then
             LabelTemps.ForeColor = Color.Red
         End If
-        If temps = 0 Then
+        If tempsPartie = 0 Then
             Timer1.Stop()
+            If MsgBox("Partie perdu, vous avec collecté " & cptCarre & " carré(s) en " & tempsCarre & " secondes",, "Game Over") = vbOK Then
+                Save_Partie()
+                Me.Close()
+                Form1.Show()
+            End If
         End If
     End Sub
 
@@ -95,11 +102,14 @@ Public Class Form2
 
     End Sub
     Private Sub Click_Label(sender As Object, e As EventArgs)
-        If Start = False Then
+        If start = False Then
             Timer1.Start()
-            Start = True
+            start = True
         End If
 
+        If Not sender.Image.Equals(stockImage(5)) Then
+            Exit Sub
+        End If
         sender.Image = stockImage(sender.Tag)
         sender.Image.Tag = 1
         If sender.Image.Tag = 1 And carteClicked <= 4 Then
@@ -109,8 +119,6 @@ Public Class Form2
                 Verif_Tableau()
             End If
         End If
-
-
     End Sub
     Private Sub Verif_Tableau()
         Dim size As Integer = tabImage.Count - 2
@@ -120,21 +128,41 @@ Public Class Form2
                 Exit Sub
             End If
         Next
+        Carre_Trouvee()
+    End Sub
+
+    Private Sub Carre_Trouvee()
         If tabImage.Count = 4 Then
             For Each Carte As Label In Panel1.Controls
-                If Carte.Tag = 1 And Carte.Enabled = True Then
+                If Carte.Image.Tag = 1 And Carte.Enabled = True Then
                     Carte.Enabled = False
                 End If
             Next
+            cptCarre += 1
+            tempsCarre = temps - tempsPartie
             carteClicked = 0
             tabImage.Clear()
         End If
+        Victoire()
     End Sub
+
+    Private Sub Victoire()
+        Dim tempsRealise As Integer = temps - tempsPartie
+        If cptCarre = 5 Then
+            partieGagne = True
+            Timer1.Stop()
+            If MsgBox("Bien joué ! " & cptCarre & " carrés trouvés. Vous avez réussi en " & tempsRealise & " secondes ", , "Victoire") = vbOK Then
+                Me.Hide()
+                Form1.Show()
+            End If
+        End If
+    End Sub
+
     Private Sub Retourner_Carte()
         Refresh()
         Threading.Thread.Sleep(seconde)
         For Each Label As Label In Panel1.Controls
-            If Label.Image.Tag = 1 And Label.Enabled = True Then
+            If Label.Image.Tag = 1 And Label.Enabled Then
                 Label.Image = stockImage(5)
                 Label.Image.Tag = 0
             End If
@@ -148,5 +176,21 @@ Public Class Form2
         Next
     End Sub
 
+    Public Sub initNom(nom As String)
+        pseudoJoueur = nom
+    End Sub
 
+    Private Sub Save_Partie()
+        Dim Joueur As Joueur
+        Joueur.Pseudo = pseudoJoueur
+        Joueur.nbCarre = cptCarre
+        Joueur.nbParties = 1
+        If partieGagne = True Then
+            Joueur.tempsTotal = tempsCarre
+        Else
+            Joueur.tempsTotal = temps
+        End If
+        Joueur.meilleurTemps = tempsCarre
+        Sauvegarde(Joueur)
+    End Sub
 End Class
