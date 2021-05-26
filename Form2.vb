@@ -40,8 +40,8 @@ Public Class Form2
         End If
         If tempsPartie = 0 Then
             Timer1.Stop()
+            Save_Partie()
             If MsgBox("Partie perdu, vous avec collecté " & cptCarre & " carré(s) en " & tempsCarre & " secondes",, "Game Over") = vbOK Then
-                Save_Partie()
                 Me.Close()
                 Form1.Show()
             End If
@@ -151,7 +151,8 @@ Public Class Form2
         If cptCarre = 5 Then
             partieGagne = True
             Timer1.Stop()
-            If MsgBox("Bien joué ! " & cptCarre & " carrés trouvés. Vous avez réussi en " & tempsRealise & " secondes ", , "Victoire") = vbOK Then
+            Save_Partie()
+            If MsgBox("Bien joué ! " & cptCarre & " carrés trouvés. Vous avez réussi en " & tempsRealise & " seconde(s) ", , "Victoire") = vbOK Then
                 Me.Hide()
                 Form1.Show()
             End If
