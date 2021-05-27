@@ -23,11 +23,12 @@ Public Class Form2
         stockImage(4) = My.Resources.Image_4
         stockImage(5) = My.Resources.Image_5
 
-        'Randomize()
+        Randomize()
         For Each box As Label In Panel1.Controls
             box.Image = stockImage(5)
             box.Image.Tag = 0
             Image_Random(box)
+            box.Text = box.Tag
         Next
         Add_Event()
     End Sub
@@ -48,7 +49,7 @@ Public Class Form2
         End If
     End Sub
 
-    Private Function Image_Random(box As Label) As Image
+    Private Sub Image_Random(box As Label)
         Dim aleatoire As Integer
         Dim bool As Boolean = False
         While bool = False
@@ -93,7 +94,7 @@ Public Class Form2
             End Select
         End While
         bool = True
-    End Function
+    End Sub
     Private Sub BtnAbandon_Click(sender As Object, e As EventArgs) Handles BtnAbandon.Click
         If MsgBox("Etes-vous sur de vouloir quitter ?", vbYesNo, "Abandon") = vbYes Then
             Me.Close()
@@ -185,7 +186,10 @@ Public Class Form2
         Dim tempsPassee As Integer = temps - tempsPartie
         Dim indice As Integer = Recherhce_Joueur(pseudoJoueur)
         If indice = -1 Then
-            Ajouter_Joueur(pseudoJoueur & "/" & cptCarre & "/" & tempsCarre & "/" & tempsPassee & "/" & 1)
+            Ajouter_Joueur(pseudoJoueur & "/" & cptCarre & "/" &
+                           tempsCarre & "/" & tempsPassee & "/" & 1)
+        Else
+            Modifier_Joueur(indice, cptCarre, tempsCarre, tempsPassee)
         End If
 
     End Sub
