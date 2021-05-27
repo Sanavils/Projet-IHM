@@ -3,59 +3,77 @@
 Module Module1
     Structure Joueur
         Dim Pseudo As String
-        Dim meilleurTemps As Integer
         Dim nbCarre As Integer
+        Dim meilleurTemps As Integer
         Dim nbParties As Integer
         Dim tempsTotal As Integer
     End Structure
+
     Sub Main()
-        Fichier_Sauvegarde()
+        Sauvegarde()
         Application.Run(Form1)
+        Ecrire_Fichier()
     End Sub
-    Dim infos() As String
-    Public Sub Sauvegarde(Joueur As Joueur)
-        infos = File.ReadAllLines("Fichier de sauvegarde.txt")
-        For i = 0 To infos.Length - 1
-            If infos(i).Contains(Joueur.Pseudo) Then
-                Traitement_Joueur(Joueur, i)
-            Else
-                Creer_Joueur(Joueur)
+
+    Public lstJoueur(2) As Joueur
+    Dim lecture As StreamReader
+    Dim ecriture As StreamWriter
+    Public nbJoueurs As Integer = 0
+    Public Sub Sauvegarde()
+        If Not System.IO.File.Exists("Fichier_de_sauvegarde.txt") Then
+            System.IO.File.Create("Fichier_de_sauvegarde.txt").Dispose()
+        End If
+        lecture = New StreamReader("Fichier_de_sauvegarde.txt", True)
+        Do While lecture.Peek >= 0
+            Ajouter_Joueur(lecture.ReadLine)
+        Loop
+        lecture.Close()
+    End Sub
+    Public Sub Ajouter_Joueur(joueur As String)
+        If nbJoueurs = lstJoueur.Length Then
+            ReDim Preserve lstJoueur(lstJoueur.Length + 2)
+        End If
+        Dim infos() As String = joueur.Split("/")
+        lstJoueur(nbJoueurs).Pseudo = infos(0)
+        lstJoueur(nbJoueurs).nbCarre = CInt(infos(1))
+        lstJoueur(nbJoueurs).meilleurTemps = CInt(infos(2))
+        lstJoueur(nbJoueurs).tempsTotal = CInt(infos(3))
+        lstJoueur(nbJoueurs).nbParties = CInt(infos(4))
+        nbJoueurs += 1
+    End Sub
+    'fin d'un partie, soit le joueur existe(méthode retrouver joueur dans le lstJoeur à partir d'un nom en paramètre)
+    'si nv joueur faire ajouter_Joueur, fin de partie concaténation de la chaine de carac
+    Public Function Recherhce_Joueur(nom As String) As Integer
+        For i = 0 To nbJoueurs - 1
+            If lstJoueur(i).Pseudo.Equals(nom) Then
+                Return i
             End If
         Next
-        'faire différence entre joueur existant et nv joueur
-        'nv joueur -> écrire une nvlle ligne dans txt
-        'j existant -> récupération des données du fichier (ReadAllLine)
-        '-> mettre dans un tableau -> chercher à chaque indice un joueur
-
-        'à l'indice donnée créer une variable donnée du joueur -> split selon le caractère de séparation
-        'analyse : regarde si il a trouvé plus de carré, encapsulation (CInt) -> si + alors on rajoute les nouvelles données / si - regarde le meilleur temps donc si + on sauv tout si - change rien
-        'chaîne de carac de toutes les données -> placer à l'ancienne chaine de carac (données) -> (WriteAllLine)
-
-    End Sub
-    Private Sub Traitement_Joueur(Joueur As Joueur, index As Integer)
-        Dim tabSauv() As String = infos(index).Split("/")
-        If Joueur.nbCarre > CInt(tabSauv(1)) Then
-            tabSauv(1) = Joueur.nbCarre
+        Return -1
+    End Function
+    Public Sub Modifier_Joueur(indice As Integer, nbCarre As Integer, tempsTrvCarre As Integer, tempsTotal As Integer)
+        If Verif_Score(indice, nbCarre, tempsTrvCarre) Then
+            lstJoueur(indice).nbCarre = nbCarre
+            lstJoueur(indice).meilleurTemps = tempsTrvCarre
         End If
-        If Joueur.meilleurTemps < CInt(tabSauv(2)) Then
-            tabSauv(2) = Joueur.meilleurTemps
+        lstJoueur(indice).tempsTotal += tempsTotal
+        lstJoueur(indice).nbParties += 1
+    End Sub
+
+    Private Function Verif_Score(indice As Integer, nbCarre As Integer, tempsTrvCarre As Integer) As Boolean
+        If lstJoueur(indice).nbCarre < nbCarre Then
+            Return True
         End If
-        tabSauv(4) += 1
-        tabSauv(3) += Joueur.tempsTotal
-        'tabSauv(index) = nvelle stats du joueur 
-        File.WriteAllLines("Fichier de sauvegarde.txt", tabSauv)
-    End Sub
-    Private Sub Creer_Joueur(Joueur As Joueur)
-        Dim chaine As String
-        Dim ecriture As StreamWriter
-        chaine = Joueur.Pseudo & "/" & Joueur.nbCarre & "/" & Joueur.meilleurTemps & "/" & Joueur.tempsTotal & "/" & Joueur.nbParties
-        ecriture = My.Computer.FileSystem.OpenTextFileWriter("Fichier de sauvegarde.txt", True)
-        ecriture.WriteLine(chaine)
-        ecriture.Close()
-    End Sub
-    Private Sub Fichier_Sauvegarde()
-        Dim ecriture As StreamWriter
-        ecriture = My.Computer.FileSystem.OpenTextFileWriter("Fichier de sauvegarde.txt", True)
+        Return lstJoueur(indice).nbCarre = nbCarre AndAlso lstJoueur(indice).meilleurTemps > tempsTrvCarre
+    End Function
+
+    Private Sub Ecrire_Fichier()
+        System.IO.File.WriteAllText("Fichier_de_sauvegarde.txt", "")
+        ecriture = New StreamWriter("Fichier_de_sauvegarde.txt", True)
+        For i = 0 To nbJoueurs - 1
+            ecriture.WriteLine(lstJoueur(i).Pseudo & "/" & lstJoueur(i).nbCarre & "/" & lstJoueur(i).meilleurTemps & "/" &
+                               lstJoueur(i).tempsTotal & "/" & lstJoueur(i).nbParties)
+        Next
         ecriture.Close()
     End Sub
 End Module

@@ -1,7 +1,7 @@
 ﻿Imports System.IO
 
 Public Class Form2
-    Dim temps As Integer = 10
+    Dim temps As Integer = 60
     Dim tempsPartie As Integer = temps
     Dim stockImage(5) As Image
     Dim cpt0 As Integer, cpt1 As Integer, cpt2 As Integer, cpt3 As Integer, cpt4 As Integer
@@ -182,16 +182,12 @@ Public Class Form2
     End Sub
 
     Private Sub Save_Partie()
-        Dim Joueur As Joueur
-        Joueur.Pseudo = pseudoJoueur
-        Joueur.nbCarre = cptCarre
-        Joueur.nbParties = 1
-        If partieGagne = True Then
-            Joueur.tempsTotal = tempsCarre
-        Else
-            Joueur.tempsTotal = temps
+        Dim tempsPassee As Integer = temps - tempsPartie
+        Dim indice As Integer = Recherhce_Joueur(pseudoJoueur)
+        If indice = -1 Then
+            Ajouter_Joueur(pseudoJoueur & "/" & cptCarre & "/" & tempsCarre & "/" & tempsPassee & "/" & 1)
         End If
-        Joueur.meilleurTemps = tempsCarre
-        Sauvegarde(Joueur)
+
     End Sub
+
 End Class

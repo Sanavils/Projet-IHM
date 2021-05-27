@@ -29,8 +29,9 @@ Public Class Form1
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        For i = 0 To nbJoueurs - 1
+            PseudoComboBox.Items.Add(lstJoueur(i).Pseudo)
+        Next
     End Sub
-
 End Class
 
