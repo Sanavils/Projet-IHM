@@ -19,6 +19,7 @@ Module Module1
     Dim lecture As StreamReader
     Dim ecriture As StreamWriter
     Public nbJoueurs As Integer = 0
+    Public time As Integer = 60
     Public Sub Sauvegarde()
         If Not System.IO.File.Exists("Fichier_de_sauvegarde.txt") Then
             System.IO.File.Create("Fichier_de_sauvegarde.txt").Dispose()

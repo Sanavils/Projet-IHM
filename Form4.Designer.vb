@@ -25,11 +25,12 @@ Partial Class Form4
         Me.Button1 = New System.Windows.Forms.Button()
         Me.TimeBox = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(713, 27)
+        Me.Button1.Location = New System.Drawing.Point(300, 12)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
         Me.Button1.TabIndex = 2
@@ -38,7 +39,7 @@ Partial Class Form4
         '
         'TimeBox
         '
-        Me.TimeBox.Location = New System.Drawing.Point(252, 62)
+        Me.TimeBox.Location = New System.Drawing.Point(152, 91)
         Me.TimeBox.MaxLength = 3
         Me.TimeBox.Name = "TimeBox"
         Me.TimeBox.Size = New System.Drawing.Size(119, 20)
@@ -47,17 +48,27 @@ Partial Class Form4
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(114, 65)
+        Me.Label1.Location = New System.Drawing.Point(14, 94)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(132, 13)
         Me.Label1.TabIndex = 4
         Me.Label1.Text = "Sélectionnez votre temps :"
         '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(75, 160)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(161, 51)
+        Me.Button2.TabIndex = 5
+        Me.Button2.Text = "Ajouter"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
         'Form4
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(384, 450)
+        Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TimeBox)
         Me.Controls.Add(Me.Button1)
@@ -71,4 +82,5 @@ Partial Class Form4
     Friend WithEvents Button1 As Button
     Friend WithEvents TimeBox As TextBox
     Friend WithEvents Label1 As Label
+    Friend WithEvents Button2 As Button
 End Class

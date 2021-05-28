@@ -89,7 +89,7 @@ Partial Class Form1
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Impact", 27.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(37, 24)
+        Me.Label2.Location = New System.Drawing.Point(147, 61)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(150, 45)
         Me.Label2.TabIndex = 6

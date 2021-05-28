@@ -37,6 +37,7 @@ Partial Class Form3
         Me.Label5 = New System.Windows.Forms.Label()
         Me.ButtonCroissant = New System.Windows.Forms.Button()
         Me.ButtonDecroissant = New System.Windows.Forms.Button()
+        Me.ButtonScore = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -172,11 +173,21 @@ Partial Class Form3
         Me.ButtonDecroissant.Text = "Décroissant"
         Me.ButtonDecroissant.UseVisualStyleBackColor = True
         '
+        'ButtonScore
+        '
+        Me.ButtonScore.Location = New System.Drawing.Point(718, 407)
+        Me.ButtonScore.Name = "ButtonScore"
+        Me.ButtonScore.Size = New System.Drawing.Size(70, 31)
+        Me.ButtonScore.TabIndex = 16
+        Me.ButtonScore.Text = "Consulter"
+        Me.ButtonScore.UseVisualStyleBackColor = True
+        '
         'Form3
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.ButtonScore)
         Me.Controls.Add(Me.ButtonDecroissant)
         Me.Controls.Add(Me.ButtonCroissant)
         Me.Controls.Add(Me.Label5)
@@ -209,4 +220,5 @@ Partial Class Form3
     Friend WithEvents Label5 As Label
     Friend WithEvents ButtonCroissant As Button
     Friend WithEvents ButtonDecroissant As Button
+    Friend WithEvents ButtonScore As Button
 End Class

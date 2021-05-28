@@ -7,17 +7,18 @@
 
     End Sub
     Private Sub TimeBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TimeBox.KeyPress
-        If e.KeyChar = vbBack Then
-            Exit Sub
-        End If
+        If e.KeyChar = vbBack Then Exit Sub
         If Not Char.IsNumber(e.KeyChar) And Not Trim(TimeBox.Text).Length <= 3 Then
             e.Handled = True
         End If
     End Sub
 
-
-
     Private Sub Form4_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         TimeBox.Text = 60
+    End Sub
+
+    Public Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Module1.time = CInt(TimeBox.Text)
+        MessageBox.Show("Temps enregistré !")
     End Sub
 End Class
