@@ -41,8 +41,6 @@ Module Module1
         lstJoueur(nbJoueurs).nbParties = CInt(infos(4))
         nbJoueurs += 1
     End Sub
-    'fin d'un partie, soit le joueur existe(méthode retrouver joueur dans le lstJoeur à partir d'un nom en paramètre)
-    'si nv joueur faire ajouter_Joueur, fin de partie concaténation de la chaine de carac
     Public Function Recherhce_Joueur(nom As String) As Integer
         For i = 0 To nbJoueurs - 1
             If lstJoueur(i).Pseudo.Equals(nom) Then

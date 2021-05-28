@@ -35,6 +35,8 @@ Partial Class Form3
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
+        Me.ButtonCroissant = New System.Windows.Forms.Button()
+        Me.ButtonDecroissant = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -152,11 +154,31 @@ Partial Class Form3
         Me.Label5.TabIndex = 13
         Me.Label5.Text = "Nombre de parties  :"
         '
+        'ButtonCroissant
+        '
+        Me.ButtonCroissant.Location = New System.Drawing.Point(167, 408)
+        Me.ButtonCroissant.Name = "ButtonCroissant"
+        Me.ButtonCroissant.Size = New System.Drawing.Size(91, 19)
+        Me.ButtonCroissant.TabIndex = 14
+        Me.ButtonCroissant.Text = "Croissant"
+        Me.ButtonCroissant.UseVisualStyleBackColor = True
+        '
+        'ButtonDecroissant
+        '
+        Me.ButtonDecroissant.Location = New System.Drawing.Point(530, 408)
+        Me.ButtonDecroissant.Name = "ButtonDecroissant"
+        Me.ButtonDecroissant.Size = New System.Drawing.Size(91, 19)
+        Me.ButtonDecroissant.TabIndex = 15
+        Me.ButtonDecroissant.Text = "Décroissant"
+        Me.ButtonDecroissant.UseVisualStyleBackColor = True
+        '
         'Form3
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.ButtonDecroissant)
+        Me.Controls.Add(Me.ButtonCroissant)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
@@ -166,7 +188,7 @@ Partial Class Form3
         Me.Controls.Add(Me.ComboBoxPseudo)
         Me.Controls.Add(Me.Button1)
         Me.Name = "Form3"
-        Me.Text = "Form3"
+        Me.Text = "Score"
         Me.Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -185,4 +207,6 @@ Partial Class Form3
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents Label5 As Label
+    Friend WithEvents ButtonCroissant As Button
+    Friend WithEvents ButtonDecroissant As Button
 End Class

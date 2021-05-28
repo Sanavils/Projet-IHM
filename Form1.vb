@@ -33,5 +33,10 @@ Public Class Form1
             PseudoComboBox.Items.Add(lstJoueur(i).Pseudo)
         Next
     End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Me.Hide()
+        Form4.Show()
+    End Sub
 End Class
 

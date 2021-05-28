@@ -108,7 +108,7 @@ Partial Class Form1
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.JouerBtn)
         Me.Name = "Form1"
-        Me.Text = "Form1"
+        Me.Text = "Accueil"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

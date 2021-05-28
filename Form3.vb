@@ -2,6 +2,7 @@
 
     Private Sub Form3_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Init_List()
+        Add_Event()
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -22,7 +23,28 @@
         Next
     End Sub
 
+
     Private Sub ComboBoxPseudo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxPseudo.SelectedIndexChanged
-        'For Each Liste 
+        For Each List In Panel1.Controls
+            List.Selectedindex = ComboBoxPseudo.SelectedIndex Or sender.SelectedIndex
+        Next
+    End Sub
+    Private Sub Liste_Controls(sender As Object, e As EventArgs)
+        ComboBoxPseudo.SelectedIndex = sender.SelectedIndex
+        For Each listes As ListBox In Panel1.Controls
+            If listes IsNot sender Then
+                listes.SelectedIndex = sender.SelectedIndex
+            End If
+        Next
+    End Sub
+
+    Private Sub Add_Event()
+        For Each List As ListBox In Panel1.Controls
+            AddHandler List.SelectedIndexChanged, AddressOf Liste_Controls
+        Next
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles ButtonDecroissant.Click
+
     End Sub
 End Class
